@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <router-view/> 
+    <Navbar />
+    <router-view />
   </div>
 </template>
 
 <script>
-
+import Navbar from "./components/Navbar.vue";
 export default {
-  name: "app"
+  name: "app",
+  components: {
+    Navbar
+  }
 };
 </script>
 
@@ -18,17 +22,19 @@ html {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   color: #2c3e50;
 }
-
 body {
   margin: 0;
+  font-family: "Quantico", sans-serif;
 }
-
+p {
+  font-family: "Poppins", sans-serif;
+}
 a {
-  color: #42b983;
+  color: #cd4031;
 }
 
 a:hover {
-  color: #128953;
+  color: #cd4031;
 }
 
 .container {
@@ -56,16 +62,16 @@ a:hover {
   border: none;
   cursor: pointer;
   border-radius: 2px;
-  background: linear-gradient(to bottom, #42b983, #128953);
+  background: linear-gradient(to bottom, #cd4031, #cd4031);
 }
 
 .btn:hover {
   color: #fff;
-  background: linear-gradient(to bottom, #42b983 50%, #128953);
+  background: linear-gradient(to bottom, #9db668 50%, #9db668);
 }
 
 .btn:active {
-  background: linear-gradient(to bottom, #128953, #42b983 50%);
+  background: linear-gradient(to bottom, #cd4031, #cd4031 50%);
 }
 
 .btn:disabled {

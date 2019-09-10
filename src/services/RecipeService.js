@@ -17,25 +17,25 @@ export default {
     },
 
     addUser: function (userObj) {
-        return axios.post(`${API_ENDPOINT}/recipes`, userObj)
+        return axios.post(`${API_ENDPOINT}/recipe`, userObj)
             .then(res => res.data)
             .catch(errorHandler)
     },
 
     removeUser: function (userObj) {
-        return axios.delete(`${API_ENDPOINT}/recipes/${userObj.id}`)
+        return axios.delete(`${API_ENDPOINT}/recipe/${userObj.id}`)
             .then(res => res.data)
             .catch(errorHandler)
     },
 
     fetchOne: function (id) {
-        return axios.get(`${API_ENDPOINT}/recipes/${id}`)
+        return axios.get(`${API_ENDPOINT}/recipe/${id}`)
             .then(res => res.data)
             .catch(errorHandler)
     },
 
     updateUser: function (userObj) {
-        return axios.put(`${API_ENDPOINT}/recipes/${userObj.id}`, userObj)
+        return axios.put(`${API_ENDPOINT}/recipe/${userObj.id}`, userObj)
             .then(res => res.data)
             .catch(errorHandler)
     }
