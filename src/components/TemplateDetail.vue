@@ -12,11 +12,11 @@
         </div>
       </div>
       <!-- Pour voir les étapes sans les crochets il est préférable de faire 
-    un double tableau en partant de :
-    v-for="user in filteredList" :user="user" :key="user.id"
+un double tableau en partant de :
+v-for="user in filteredList" :user="user" :key="user.id"
 
-    j'aurais un autre
-    v-for="etape in user" :user="etape" :key="etaper.id" 
+j'aurais un autre
+v-for="etape in user" :user="etape" :key="etaper.id" 
       -->
 
       <div class="description_recette">
@@ -37,7 +37,7 @@
 
           <div>
             <p>Temps préparation :</p>
-            <span>{{user.tempsPreparation}}</span>
+            <span>{{preparation}}</span>
           </div>
         </div>
 
@@ -45,9 +45,7 @@
           <div>
             <ul v-for="n in user" :key="n.id">
               <!-- Créer un ul li avec une boucle sur le ul pour appeler les ingrédients -->
-              <li>
-                  {{user.ingredients}}
-                </li>
+              <li>{{user.ingredients}}</li>
             </ul>
           </div>
           <div>
@@ -60,7 +58,6 @@
 </template>
 
 <script>
-
 import RecipeService from "../services/RecipeService.js";
 export default {
   name: "TemplateDetail",
@@ -72,6 +69,14 @@ export default {
   props: {
     user: {
       type: Object
+    }
+  },
+  computed: {
+    preparation: function() {
+      var min = this.user.tempsPreparation;
+      var hours = Math.floor(min / 60);
+      var minutes = min % 60;
+      return hours + "h" + minutes;
     }
   }
 };
