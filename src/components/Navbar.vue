@@ -20,7 +20,7 @@ export default {
 .navbar {
   background-color: #EFEFEF;
   overflow: hidden;
-  margin-bottom: 3em;
+  margin-bottom: 1em;
   border-bottom:5px solid #9DB668;
 }
 

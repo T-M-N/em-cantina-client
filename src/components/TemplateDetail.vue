@@ -1,59 +1,55 @@
 <template>
   <div>
-    <div class="information_recette">
-      <div class="photo_recette">
+<main>
+    <div class="wrapper">
+      <section>
         <figure>
-          <img :src="user.photo || DEFAULT_PHOTO" :alt="`Photo de ${user.titre}`" />
+          <img :src="recipe.photo || DEFAULT_PHOTO" :alt="`Photo de ${recipe.titre}`" />
         </figure>
+      </section>
 
+      <section class="description">
         <div class="titre_recette">
           <span>Détail recette</span>
-          <h1>{{user.titre}}</h1>
+          <h1>{{recipe.titre}}</h1>
+           <p>{{recipe.description}}</p>
         </div>
-      </div>
-      <!-- Pour voir les étapes sans les crochets il est préférable de faire 
-un double tableau en partant de :
-v-for="user in filteredList" :user="user" :key="user.id"
 
-j'aurais un autre
-v-for="etape in user" :user="etape" :key="etaper.id" 
-      -->
-
-      <div class="description_recette">
-        <div>
-          <p>{{user.description}}</p>
-        </div>
+        <br/>
 
         <div class="detail">
-          <div>
-            <p>Niveau :</p>
-            <span>{{user.niveau}}</span>
+          <div class="border-right">
+            <p class="font-quantico">Niveau :</p>
+            <span>{{recipe.niveau}}</span>
+          </div>
+
+          <div class="border-right">
+            <p class="font-quantico">Personnes :</p>
+            <span>{{recipe.personnes}}</span>
           </div>
 
           <div>
-            <p>Personnes :</p>
-            <span>{{user.personnes}}</span>
-          </div>
-
-          <div>
-            <p>Temps préparation :</p>
-            <span>{{preparation}}</span>
+            <p class="font-quantico">Temps préparation :</p>
+            <span>{{TempsPreparation}}</span>
           </div>
         </div>
-
-        <div class="detail2">
-          <div>
-            <ul v-for="n in user" :key="n.id">
-              <!-- Créer un ul li avec une boucle sur le ul pour appeler les ingrédients -->
-              <li>{{user.ingredients}}</li>
-            </ul>
-          </div>
-          <div>
-            <span>-{{user.etapes[0]}}</span>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
+    <div class="wrapper2">
+      <section class=" ingredient">
+          <p>Les ingrédients:</p>
+         
+          <ul class="list_ingredient">
+            <li v-for="ingredient in recipe.ingredients" :recipe="ingredient" :key="ingredient.id">{{ingredient[0]}}-{{ingredient[1]}}</li>
+          </ul>
+        
+      </section>
+      <section class=" w-500 ingredient">
+          <p>Etapes de préparation :</p>
+          <p>-{{recipe.etapes[0]}}</p>
+      </section>
+    </div>
+</main>
   </div>
 </template>
 
@@ -61,19 +57,14 @@ v-for="etape in user" :user="etape" :key="etaper.id"
 import RecipeService from "../services/RecipeService.js";
 export default {
   name: "TemplateDetail",
-  data: function() {
-    return {
-      usersList: null
-    };
-  },
   props: {
-    user: {
+    recipe: {
       type: Object
     }
   },
   computed: {
-    preparation: function() {
-      var min = this.user.tempsPreparation;
+    TempsPreparation: function() {
+      var min = this.recipe.tempsPreparation;
       var hours = Math.floor(min / 60);
       var minutes = min % 60;
       return hours + "h" + minutes;
@@ -83,41 +74,77 @@ export default {
 </script>
 
 <style scoped>
-.detail2 {
-  flex-direction: columns;
-}
-.photo_recette {
+.wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  width: 900px;
+  margin: auto;
 }
-.titre_recette {
-  color: #908f8f;
-  background: #f4f4f4;
-  position: relative;
-  width: 200px;
-  /*margin: auto;*/
-  padding: 1em 2em;
-  top: -90px;
+.wrapper2{
+ display: flex;
+    -ms-flex-pack: center;
+    width: 900px;
+    margin: auto;
+    justify-content: space-between;
+    background: #f4f4f4;
+    padding: 2em;
 }
-.information_recette {
-  display: flex;
-  justify-content: space-around;
+.w-500{
+    width:500px;
+}
+
+.ingredient p {
+    text-align:left;
+}
+
+li{
+    text-align:left;
+}
+
+.baseline{
+    align-items: baseline
 }
 
 .detail {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-self: normal;
 }
 
-.description_recette {
+
+.detail div:nth-child(odd) {
+ /* background-color: #9db668;*/
+  padding: 2em;
+  width: 118px;
+}
+
+.detail div:nth-child(even) {
+ /* background-color: #f4f4f4;*/
+  padding: 2em;
+  width: 118px;
+}
+
+
+.description {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.titre_recette {
+  color: #908f8f;
+  background: #f4f4f4;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.titre_recette h1{
+    color:#cd4031 !important;
 }
 figure img {
   display: block;
-  max-width: 270px;
+  max-width: 350px;
   margin: auto;
 }
 </style>

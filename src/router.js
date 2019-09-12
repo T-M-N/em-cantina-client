@@ -17,10 +17,11 @@ export default new VueRouter({
         component: List,
         name: 'list'
     },
-        {
-            path: '/detail/:id',
-            component: Detail
-        },
+    {
+        path: '/detail/:id',
+        component: Detail,
+        name : 'detail'
+    },
     {
         path: '/add',
         component: Add

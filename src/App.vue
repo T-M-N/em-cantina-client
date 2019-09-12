@@ -99,4 +99,16 @@ form select {
   border: thin solid #c0c0c0;
   background: linear-gradient(to bottom, #e6e6e6 0%, transparent 20%);
 }
+
+/**
+   * Style pour les détails recettes
+   */
+.border-right{
+  border-right:1px solid #cccccc;
+}
+.font-quantico{
+     font-family: "Quantico", sans-serif;
+     font-weight: 700;
+}
+
 </style>

@@ -16,14 +16,14 @@ export default {
             .catch(errorHandler)
     },
 
-    addUser: function (userObj) {
-        return axios.post(`${API_ENDPOINT}/recipe`, userObj)
+    addRecipe: function (recipeObj) {
+        return axios.post(`${API_ENDPOINT}/recipe`, recipeObj)
             .then(res => res.data)
             .catch(errorHandler)
     },
 
-    removeUser: function (userObj) {
-        return axios.delete(`${API_ENDPOINT}/recipe/${userObj.id}`)
+    removeRecipe: function (recipeObj) {
+        return axios.delete(`${API_ENDPOINT}/recipe/${recipeObj.id}`)
             .then(res => res.data)
             .catch(errorHandler)
     },
@@ -34,8 +34,8 @@ export default {
             .catch(errorHandler)
     },
 
-    updateUser: function (userObj) {
-        return axios.put(`${API_ENDPOINT}/recipe/${userObj.id}`, userObj)
+    updateRecipe: function (recipeObj) {
+        return axios.put(`${API_ENDPOINT}/recipe/${recipeObj.id}`, recipeObj)
             .then(res => res.data)
             .catch(errorHandler)
     }

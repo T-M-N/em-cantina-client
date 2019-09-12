@@ -18,17 +18,17 @@ Vue.config.productionTip = false
 const store = new Vuex.Store({
   state: function () {
     return {
-      userSearch: ""
+      recipeSearch: ""
     }
   },
   actions: {
-    updateUserSearch: function (context, value) {
-      context.commit('UPDATE_USER_SEARCH', value);
+    updateRecipeSearch: function (context, value) {
+      context.commit('UPDATE_RECIPE_SEARCH', value);
     }
   },
   mutations: {
-    UPDATE_USER_SEARCH: function (state, value) {
-      state.userSearch = value;
+    UPDATE_RECIPE_SEARCH: function (state, value) {
+      state.recipeSearch = value;
     }
   }
 })

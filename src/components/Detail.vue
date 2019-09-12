@@ -1,6 +1,6 @@
 <template>
   <div class="container centered">
-    <TemplateDetail :user="user" v-if="user" @send="update"/> 
+    <TemplateDetail :recipe="recipe" v-if="recipe" @send="update"/> 
   </div>
 </template>
 
@@ -15,13 +15,13 @@ export default {
   },
   data: function() {
     return {
-      user: null
+      recipe: null
     };
   },
   created: function() {
     RecipeService.fetchOne(this.$route.params.id)
-      .then(user => {
-        this.user = user;
+      .then(recipe => {
+        this.recipe = recipe;
       })
       .catch(({ message }) => {
         this.$toasted.error(message);
@@ -29,8 +29,8 @@ export default {
       });
   },
   methods: {
-    update: function(user) {
-     RecipeService.updateUser(user)
+    update: function(recipe) {
+     RecipeService.updateRecipe(recipe)
         .then(() => {
           this.$toasted.success("Collaborateur mis à jour ! 😉");
           this.$router.replace("/list");

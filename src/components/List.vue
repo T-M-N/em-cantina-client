@@ -3,7 +3,7 @@
   <h1>Recettes</h1>
   <br/>
   <form class="filterform" @submit.prevent>
-      <input type="search" v-model="userSearch" placeholder="Tapez un nom ou un lieu ...">
+      <input type="search" v-model="recipeSearch" placeholder="Tapez un nom ou un lieu ...">
 
       <label for="filter">Filtrer par :</label>
       <select name="filterBy" v-model="filterValue">
@@ -12,8 +12,8 @@
       </select>
     </form>
 
-    <div class="userlist" v-if="usersList">
-    <RecipeCard v-for="user in filteredList" :user="user" :key="user.id" @remove="removeUser"/>
+    <div class="recipelist" v-if="recipesList">
+    <RecipeCard v-for="recipe in filteredList" :recipe="recipe" :key="recipe.id" @remove="removeRecipe"/>
   </div>
 </div>
 </template>
@@ -29,22 +29,22 @@ components: {
 },
 data: function() {
   return {
-    usersList: null,
+    recipesList: null,
     filterValue: "name"
   };
 },
 computed: {
-  userSearch: {
+  recipeSearch: {
     get: function() {
-      return this.$store.state.userSearch;
+      return this.$store.state.recipeSearch;
     },
     set: function(newVal) {
-      this.$store.dispatch("updateUserSearch", newVal);
+      this.$store.dispatch("updateRecipeSearch", newVal);
     }
   },
     filteredList: function() {
-      return this.usersList.filter(({ titre, niveau, personnes }) => {
-        let searchText = this.$store.state.userSearch.toLowerCase();
+      return this.recipesList.filter(({ titre, niveau, personnes }) => {
+        let searchText = this.$store.state.recipeSearch.toLowerCase();
         titre = titre.toLowerCase();
         niveau = niveau;
         personnes = personnes;
@@ -58,12 +58,12 @@ computed: {
     }
 },
 methods: {
-  removeUser: function(userToDelete) {
-    RecipeService.removeUser(userToDelete)
+  removeRecipe: function(recipeToDelete) {
+    RecipeService.removeRecipe(recipeToDelete)
       .then(res => {
-        let index = this.usersList.indexOf(userToDelete);
+        let index = this.recipesList.indexOf(recipeToDelete);
         if (index > -1) {
-          this.usersList.splice(index, 1);
+          this.recipesList.splice(index, 1);
         }
         this.$toasted.success(
           `Collaborateur ${res.removed.titre} supprimé ! 💪`
@@ -73,8 +73,8 @@ methods: {
   }
 },
 created: function() {
-  RecipeService.fetchAll().then(usersList => {
-    this.usersList = usersList;
+  RecipeService.fetchAll().then(recipesList => {
+    this.recipesList = recipesList;
   });
 }
 };
@@ -90,7 +90,7 @@ h1{
   text-transform: uppercase;
   font-weight: 700;
 }
-.userlist{
+.recipelist{
   display: flex;
   justify-content: center;
   align-items: center;
