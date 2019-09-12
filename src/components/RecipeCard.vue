@@ -46,7 +46,12 @@ export default {
     DEFAULT_PHOTO: function() {
       return "https://s1.qwant.com/thumbr/0x0/2/2/6788a08a24aefe72817478982ee2e6/b_1_q_0_p_0.jpg?u=http%3A%2F%2Fgurucul.com%2Fwp-content%2Fuploads%2F2015%2F01%2Fdefault-user-icon-profile.png&q=0&b=1&p=0&a=1";
     }
-}
+},
+  methods: {
+    onRemove: function() {
+      this.$emit("remove", this.recipe); // Envoi l'objet 'user' vers le parent via l'événement personnalisé 'remove'
+    }
+  }
 };
 </script>
 

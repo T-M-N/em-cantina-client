@@ -46,7 +46,10 @@
       </section>
       <section class=" w-500 ingredient">
           <p>Etapes de préparation :</p>
-          <p>-{{recipe.etapes[0]}}</p>
+           <ul class="list_ingredient">
+            <li v-for="etape in recipe.etapes" :recipe="etape" :key="etape.id">{{etape}}</li>
+          </ul>
+          <!-- <p>-{{recipe.etapes[0]}}</p> -->
       </section>
     </div>
 </main>
