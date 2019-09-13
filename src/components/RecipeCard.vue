@@ -2,7 +2,7 @@
   <article class="recipe-card">
     <div class="recette_card">
       <figure>
-        <img :src="recipe.photo || DEFAULT_PHOTO" :alt="`Photo de ${recipe.photo}`" />
+        <img :src="recipe.photo || DEFAULT_PHOTO" :alt="`Photo de ${recipe.titre}`" />
       </figure>
       <h2>
         <a href="#">{{recipe.titre}}</a>
@@ -59,9 +59,8 @@ export default {
 .recette_card{
    padding:1em;
 }
-
-.recipe-card:nth-child(even){
-  background: #f4f4f4;
+article{
+  margin:5px;
 }
 
 h2 {

@@ -1,61 +1,47 @@
 <template>
   <form class="recipeform" @submit.prevent="onSubmit">
-    
-     <div class="form-group">
-      <label for="titre">Titre :</label>
+
+    <div class="form-group">
+      <label for="titre">titre :</label>
       <input
         type="text"
         v-model="$v.recipe.titre.$model"
         @blur="$v.recipe.titre.$touch()"
         id="titre"
-        placeholder="Titre"
+        placeholder="titre"
       >
-      <p class="error" v-if="!$v.recipe.titre.required">Le champs est requis</p>
-      <p class="error" v-if="$v.recipe.titre.$dirty && !$v.recipe.titre.alpha"
-      >Le champs ne doit contenir que des lettres</p>
+      <span v-if="$v.recipe.titre.$dirty && !$v.recipe.titre.required">Le champs est requis</span>
+      <span
+        v-if="$v.recipe.titre.$dirty &&  !$v.recipe.titre.alpha"
+      >Le champs ne doit contenir que des lettres</span>
     </div>
-
-  <div class="form-group">
-    <label for="niveau">Niveau :</label>
-  <select v-model="$v.recipe.niveau.$model"
-        @blur="$v.recipe.niveau.$touch()"
-        id="niveau">
-        <option v-for="rechercheNiveau in recipesList" :recipe="rechercheNiveau" :key="rechercheNiveau.id">{{rechercheNiveau.niveau}}</option>
-      </select>
-       <p class="error" v-if="$v.recipe.niveau.$dirty && !$v.recipe.niveau.required">Le champs est requis</p>
-  </div> 
 
    <div class="form-group">
-      <label for="personnes">Personnes :</label>
+      <label for="description">description :</label>
       <input
-        type="text"
-        v-model="$v.recipe.personnes.$model"
-        @blur="$v.recipe.personnes.$touch()"
-        id="titre"
-        placeholder="Personnes"
-      >
-      <p class="error" v-if="!$v.recipe.personnes.required">Le champs est requis</p>
-      <p class="error" v-if="$v.recipe.personnes.$dirty && !$v.recipe.personnes.integer"
-      >Le champs doit que des entiers</p>
-    </div>
-  
-<div class="form-group">
-      <label for="description">Description :</label>
-      <textarea cols="60" rows="5" maxlength="200"
         type="text"
         v-model="$v.recipe.description.$model"
         @blur="$v.recipe.description.$touch()"
-        id="titre"
-        placeholder="Description"
-      ></textarea>
-      <p class="error" v-if="$v.recipe.description.$dirty && !$v.recipe.description.required">Le champs est requis</p>
-      <p class="error"
-        v-if="$v.recipe.description.$dirty && !$v.recipe.description.alpha"
-      >Le champs ne doit contenir que des lettres</p>
-      <p class="error"
-        v-if="$v.recipe.description.$dirty && !$v.recipe.description.maxLength"
-      >Ce champs ne doit contenir que {{$v.recipe.description.$params.maxLength.max}}</p>
+        id="description"
+        placeholder="description"
+      >
+      <span v-if="$v.recipe.description.$dirty && !$v.recipe.description.required">Le champs est requis</span>
+      <span
+        v-if="$v.recipe.description.$dirty &&  !$v.recipe.description.alpha"
+      >Le champs ne doit contenir que des lettres</span>
     </div>
+
+    <div class="form-group">
+     <label for="personnes">Number of personnes (1-20):</label>
+      <input type="number" id="personnes"
+       min="1" max="20"
+       v-model.number="$v.recipe.personnes.$model"
+       
+      @blur="$v.recipe.personnes.$touch()">
+      <span v-if="!$v.recipe.personnes.required">Le champs est requis</span>
+    </div>
+
+
     <div class="actions">
       <button type="submit" class="btn">Envoyer</button>
     </div>
@@ -63,8 +49,19 @@
 </template>
 
 <script>
-import { required, alpha, alphaNum, integer, maxLength, url } from "vuelidate/lib/validators";
+import { required, helpers,  minLength } from 'vuelidate/lib/validators'
+
+// Pour accepter les espaces
+let alpha = value => {
+  if (typeof value === 'undefined' || value === null || value === '') {
+    return true
+  }
+  //je ne veux pas des symboles </{} etc
+  return /^[a-zA-Z\s\W]+$/g.test(value)
+}
+
 import RecipeService from "../services/RecipeService.js";
+
 export default {
   name: "Form",
   props: {
@@ -73,35 +70,30 @@ export default {
       default: function() {
         return {
           id: null,
-          titre:"",
-          description: "",
-          niveau:"",
-          personnes: null
+          titre: "",
+          description:"",
+          personnes:null,
+         minLength: 3,
         };
       }
-    },
-    recipesList: {
-      type: Object
     }
   },
 
   validations: {
     recipe: {
-       titre: { required, alpha },
-      description: { required, alpha, maxLength: maxLength(200)},
-       niveau: { required },
-        personnes: { required, integer },
+      titre: { required, alpha },
+      description: { required, alpha },
+     personnes: { required }
     }
   },
-   methods: {
-    onSubmit: function() {
-      // Si les règles de l'objet 'recipe' sont invalides, on stoppe l'exécution de la fonction
-      if (this.$v.recipe.$invalid) return this.$v.recipe.$touch();
 
-      // Fait remonter un événement vers le composant parent
+methods: {
+    onSubmit: function() {
+      if (this.$v.recipe.$invalid) return this.$v.recipe.$touch();
       this.$emit("send", this.recipe);
     }
-  },
+},
+  
   created: function() {
     RecipeService.fetchAll().then(recipesList => {
       this.recipesList = recipesList;
@@ -136,7 +128,7 @@ export default {
   vertical-align: middle;
 }
 
-.error {
+.recipeform input ~ span {
   display: block;
   font-size: 0.8em;
   color: red;
