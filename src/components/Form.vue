@@ -75,21 +75,23 @@
 
     <div
       class="form-group"
-      v-for="ingredient in recipe.ingredients"
+      v-for="(ingredient,index) in recipe.ingredients"
       :recipe="ingredient"
       :key="ingredient.id"
     >
       <label for="ingredient">ingredient :</label>
       <input type="text" v-model="ingredient[0]" id="ingredient" placeholder="ingredient" />
       <input type="text" v-model="ingredient[1]" id="ingredient" placeholder="ingredient" />
+      <a href="#" title="Supprimer cette tâche" @click.prevent="supprimerIngredient(index)">❌</a>
       <span v-if="$v.recipe.ingredient.$dirty">Le champs est requis</span>
     </div>
 
-<button class="button btn-primary" @click.prevent="ajouterIng">Ajouter un ingrédient</button>
+<button class="button btn-primary" @click.prevent="ajouterIngredient">Ajouter un ingrédient</button>
 
     <div class="form-group" v-for="(etape, index) in recipe.etapes" :recipe="etape" :key="index">
       <label for="etapes">etape :</label>
       <input type="text" v-model="recipe.etapes[index]" id="etape" placeholder="etape" />
+      <a href="#" title="Supprimer cette tâche" @click.prevent="supprimerEtape(index)">❌</a>
       <span v-if="$v.recipe.etape.$dirty">Le champs est requis</span>
     </div>
 <button class="button btn-primary" @click.prevent="ajouterEtape">Ajouter un ingrédient</button>
@@ -138,11 +140,17 @@ export default {
     }
   },
   methods: {
-    ajouterIng: function(){
+    ajouterIngredient: function(){
       this.recipe.ingredients.push([]);
     },
      ajouterEtape: function(){
       this.recipe.etapes.push([]);
+    },
+    supprimerIngredient : function(index) {
+        this.recipe.ingredients.splice(index, 1);
+    },
+     supprimerEtape : function(index) {
+        this.recipe.etapes.splice(index, 1);
     },
     onSubmit: function() {
       if (this.$v.recipe.$invalid) return this.$v.recipe.$touch();
