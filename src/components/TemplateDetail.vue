@@ -38,7 +38,6 @@
     <div class="wrapper2">
       <section class=" ingredient">
           <p>Les ingrédients:</p>
-         
           <ul class="list_ingredient">
             <li v-for="ingredient in recipe.ingredients" :recipe="ingredient" :key="ingredient.id">{{ingredient[0]}}-{{ingredient[1]}}</li>
           </ul>

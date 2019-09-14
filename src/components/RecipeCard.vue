@@ -49,7 +49,7 @@ export default {
 },
   methods: {
     onRemove: function() {
-      this.$emit("remove", this.recipe); // Envoi l'objet 'user' vers le parent via l'événement personnalisé 'remove'
+      this.$emit("remove", this.recipe); 
     }
   }
 };

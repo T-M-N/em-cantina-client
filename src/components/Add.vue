@@ -2,7 +2,7 @@
   <div class="container centered">
     <h1>Ajouter une recette</h1>
     <hr>
-    <Form @send="addRecipe"/>
+    <Form  @send="addRecipe"/>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
   components: {
     Form
   },
+  
   methods: {
     addRecipe: function(recipe) {
       // Le formulaire est valide, on prépare donc l'envoi des données au serveur
@@ -22,7 +23,7 @@ export default {
         .then(() => {
           // Redirige le visiteur vers la page de listing
           this.$router.replace("/list");
-          this.$toasted.success("Collaborateur correctement ajouté 😉 !");
+          this.$toasted.success("Recette correctement ajouté 😉 !");
         })
         .catch(({ message }) => this.$toasted.error(message));
     }

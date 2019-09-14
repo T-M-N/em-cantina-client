@@ -66,7 +66,7 @@ methods: {
           this.recipesList.splice(index, 1);
         }
         this.$toasted.success(
-          `Collaborateur ${res.removed.titre} supprimé ! 💪`
+          `Recette ${res.recette.titre} supprimé ! 💪`
         );
       })
       .catch(({ message }) => this.$toasted.error(message));

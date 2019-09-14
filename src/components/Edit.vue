@@ -34,7 +34,7 @@ export default {
     update: function(recipe) {
       RecipeService.updateRecipe(recipe)
         .then(() => {
-          this.$toasted.success("Collaborateur mis à jour ! 😉");
+          this.$toasted.success("Recette mis à jour ! 😉");
           this.$router.replace("/list");
         })
         .catch(({ message }) => this.$toasted.error(message));

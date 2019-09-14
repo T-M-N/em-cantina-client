@@ -17,7 +17,8 @@ export default {
     },
 
     addRecipe: function (recipeObj) {
-        return axios.post(`${API_ENDPOINT}/recipe`, recipeObj)
+        console.dir(recipeObj);
+        return axios.post(`${API_ENDPOINT}/recipes`, recipeObj)
             .then(res => res.data)
             .catch(errorHandler)
     },
