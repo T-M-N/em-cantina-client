@@ -1,6 +1,6 @@
 <template>
   <form class="userform" @submit.prevent="onSubmit">
-    <div class="form-group">
+<div class="form-group">
       <label for="titre">titre :</label>
       <input
         type="text"
@@ -26,7 +26,7 @@
       >Le champs est requis</span>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="niveau">niveau :</label>
       <input
         type="text"
@@ -36,7 +36,16 @@
         placeholder="niveau"
       />
       <span v-if="$v.recipe.niveau.$dirty && !$v.recipe.niveau.required">Le champs est requis</span>
-    </div>
+    </div> -->
+
+    <div class="form-group">
+      <label for="niveau">niveau :</label>
+      <select  v-model="$v.recipe.niveau.$model">
+        <option :value="maitre">{{maitre}}</option>
+          <option :value="jedi">{{jedi}}</option>
+            <option  :value="padawan">{{padawan}}</option>
+      </select>  
+      </div>     
 
     <div class="form-group">
       <label for="personnes">personnes :</label>
@@ -127,6 +136,13 @@ export default {
       }
     }
   },
+  data : function(){
+    return{
+          maitre : "maitre",
+          jedi : "jedi",
+          padawan : "padawan"
+    }
+  },
   validations: {
     recipe: {
       titre: { required },
@@ -155,7 +171,8 @@ export default {
     onSubmit: function() {
       if (this.$v.recipe.$invalid) return this.$v.recipe.$touch();
       this.$emit("send", this.recipe);
-    }
+    },
+
   }
 };
 </script>
