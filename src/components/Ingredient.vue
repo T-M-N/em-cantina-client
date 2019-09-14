@@ -8,8 +8,7 @@
      v-for="ingredient in recipe.ingredients"  :recipe="ingredient"
       :key="ingredient.id">
       <label for="ingredient">ingredient :</label>
-      <input type="text"  v-model="ingredient[0]" id="ingredient" placeholder="ingredient" />
-      <input type="text"  v-model="ingredient[1]" id="ingredient" placeholder="ingredient" /> 
+      <input type="text"  v-model="ingredients" id="ingredient" placeholder="ingredient" />
     </div>
 
     
@@ -24,10 +23,15 @@ import { required, url, alpha, integer } from "vuelidate/lib/validators";
 
 export default {
   name: "Ingredient",
-  data: function(){
-    return{
+   props: {
+    recipe: {
+      type: Object,
+      default: function() {
+        return {
+    
       ingredients:[Array, Array, String, String]
-    }
+  
+        }}}
   },
   methods: {
      addRow: function() {

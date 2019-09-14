@@ -26,10 +26,14 @@
 
 export default {
   name: "Etape",
-  data: function(){
-    return{
+   props: {
+    recipe: {
+      type: Object,
+      default: function() {
+        return {
       etapes:[Array, String]
     }
+      }}
   },
   methods: {
     addRow: function() {

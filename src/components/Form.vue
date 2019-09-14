@@ -123,7 +123,7 @@ export default {
           description: "",
           niveau: "",
           personnes: null,
-          ingredients:[[""], [""]],
+          ingredients:[[""]],
           etapes: [""],
           tempsPreparation: null,
           photo: ""
