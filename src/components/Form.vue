@@ -71,6 +71,8 @@
       <input type="url" v-model.lazy="$v.recipe.photo.$model" id="photo" placeholder="http://" />
     </div>
 
+
+
     <div
       class="form-group"
       v-for="ingredient in recipe.ingredients"
@@ -83,15 +85,14 @@
       <span v-if="$v.recipe.ingredient.$dirty">Le champs est requis</span>
     </div>
 
+<button class="button btn-primary" @click.prevent="ajouterIng">Ajouter un ingrédient</button>
+
     <div class="form-group" v-for="(etape, index) in recipe.etapes" :recipe="etape" :key="index">
       <label for="etapes">etape :</label>
       <input type="text" v-model="recipe.etapes[index]" id="etape" placeholder="etape" />
-
       <span v-if="$v.recipe.etape.$dirty">Le champs est requis</span>
     </div>
-
-<Ingredient/>
-<Etape/>
+<button class="button btn-primary" @click.prevent="ajouterEtape">Ajouter un ingrédient</button>
 
     <div class="actions">
       <button type="submit" class="btn">Envoyer</button>
@@ -103,16 +104,9 @@
 import RecipeService from "../services/RecipeService.js";
 import { required, url, alpha, integer } from "vuelidate/lib/validators";
 
-import Ingredient from "./Ingredient.vue";
-import Etape from "./Etape.vue";
-
 
 export default {
   name: "Form",
-  components:{
-    Ingredient,
-    Etape
-  },
   props: {
     recipe: {
       type: Object,
@@ -144,6 +138,12 @@ export default {
     }
   },
   methods: {
+    ajouterIng: function(){
+      this.recipe.ingredients.push([]);
+    },
+     ajouterEtape: function(){
+      this.recipe.etapes.push([]);
+    },
     onSubmit: function() {
       if (this.$v.recipe.$invalid) return this.$v.recipe.$touch();
       this.$emit("send", this.recipe);

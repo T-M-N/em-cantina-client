@@ -1,16 +1,15 @@
 <template>
   <div>
     <div>
-      <button class="button btn-primary" >Ajouter un ingrédient</button>
+      <button class="button btn-primary" @click.prevent="addRow">Ajouter un ingrédient</button>
     </div>
 
-    <div class="form-group" 
+    <!-- <div class="form-group" 
      v-for="ingredient in recipe.ingredients"  :recipe="ingredient"
       :key="ingredient.id">
       <label for="ingredient">ingredient :</label>
       <input type="text"  v-model="ingredients" id="ingredient" placeholder="ingredient" />
-    </div>
-
+    </div> -->
     
   </div>
 </template>
@@ -19,7 +18,6 @@
 
 import RecipeService from "../services/RecipeService.js";
 import { required, url, alpha, integer } from "vuelidate/lib/validators";
-
 
 export default {
   name: "Ingredient",
@@ -36,6 +34,7 @@ export default {
   methods: {
      addRow: function() {
       this.recipe.etapes.push({});
+     
     },
     onSubmit: function() {
       if (this.$v.recipe.$invalid) return this.$v.recipe.$touch();
