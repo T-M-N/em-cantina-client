@@ -6,6 +6,16 @@ import VueToasted from 'vue-toasted'
 import Vuex from 'vuex'
 import router from './router.js'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faPlusCircle)
+library.add(faTimesCircle)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 Vue.use(VueRouter) // Enregistre le plugin "VueRouter" à l'application Vue.js
 Vue.use(Vuelidate) // Enregistre le plugin "Vuelidate" à l'application Vue.js
 Vue.use(VueToasted, {

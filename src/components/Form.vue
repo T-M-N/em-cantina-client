@@ -88,23 +88,22 @@
       :recipe="ingredient"
       :key="ingredient.id"
     >
-      <label for="ingredient">ingredient :</label>
+      <label for="ingredient">Ingredients : </label> &nbsp;
       <input type="text" v-model="ingredient[0]" id="ingredient" placeholder="ingredient" />
       <input type="text" v-model="ingredient[1]" id="ingredient" placeholder="ingredient" />
-      <a href="#" title="Supprimer cette tâche" @click.prevent="supprimerIngredient(index)">❌</a>
+      &nbsp; <a href="#" title="Supprimer cette tâche" @click.prevent="supprimerIngredient(index)"><font-awesome-icon icon="times-circle" /></a>
       <span v-if="$v.recipe.ingredient.$dirty">Le champs est requis</span>
     </div>
-
-<button class="button btn-primary" @click.prevent="ajouterIngredient">Ajouter un ingrédient</button>
+ <button @click.prevent="ajouterIngredient"><font-awesome-icon icon="plus-circle" /> Ajouter un ingrédient</button>
 
     <div class="form-group" v-for="(etape, index) in recipe.etapes" :recipe="etape" :key="index">
-      <label for="etapes">etape :</label>
+      <label for="etapes">Etapes :</label> &nbsp;
       <input type="text" v-model="recipe.etapes[index]" id="etape" placeholder="etape" />
-      <a href="#" title="Supprimer cette tâche" @click.prevent="supprimerEtape(index)">❌</a>
-      <span v-if="$v.recipe.etape.$dirty">Le champs est requis</span>
+       &nbsp;<a href="#" title="Supprimer cette tâche" @click.prevent="supprimerEtape(index)"><font-awesome-icon icon="times-circle" /></a>
+       <span v-if="$v.recipe.etape.$dirty">Le champs est requis</span>
     </div>
-<button class="button btn-primary" @click.prevent="ajouterEtape">Ajouter un ingrédient</button>
-
+<button @click.prevent="ajouterEtape"><font-awesome-icon icon="plus-circle" /> Ajouter une étape</button>
+   
     <div class="actions">
       <button type="submit" class="btn">Envoyer</button>
     </div>
