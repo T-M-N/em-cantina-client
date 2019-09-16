@@ -28,12 +28,11 @@ body {
   overflow-x: hidden;
 }
 
-  .fond {
-      background-image: url(./assets/fond_legume.png);
-      background-repeat: no-repeat;
-      background-position: top center;
-  }
-
+.fond {
+  background-image: url(./assets/fond_legume.png);
+  background-repeat: no-repeat;
+  background-position: top center;
+}
 
 p {
   font-family: "Poppins", sans-serif;
@@ -127,8 +126,8 @@ h1 {
 }
 
 @media screen and (max-width: 780px) {
-  h1{
-    font-size:1.5em;
+  h1 {
+    font-size: 1.5em;
   }
 }
 

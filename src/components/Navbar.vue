@@ -13,7 +13,7 @@
       </router-link>
     </div>
     <a class="icon" @click="burger">
-      <font-awesome-icon icon="home" />
+      <font-awesome-icon icon="bars" />
     </a>
   </nav>
 </template>
@@ -121,7 +121,7 @@ export default {
   .icon {
     display: block !important;
     position: absolute;
-    top: 0;
+    top: 15px;
     right: 0;
   }
 

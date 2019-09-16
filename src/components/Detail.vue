@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <TemplateDetail :recipe="recipe" v-if="recipe" @send="update" @remove="removeRecipe" />
+    <TemplateDetail :recipe="recipe" v-if="recipe"  @remove="removeRecipe" />
   </div>
 </template>
 
@@ -15,27 +15,16 @@ export default {
   },
   data: function() {
     return {
-      recipesList: null,
       recipe: null
     };
   },
  
   methods: {
-    update: function(recipe) {
-      RecipeService.updateRecipe(recipe)
-        .then(() => {
-          this.$toasted.success("Recette mise à jour ! 😉");
-          this.$router.replace("/list");
-        })
-        .catch(({ message }) => this.$toasted.error(message));
-    },
     removeRecipe: function(recipeToDelete) {
+      console.log(recipeToDelete);
       RecipeService.removeRecipe(recipeToDelete)
         .then(res => {
-          let index = this.recipesList.indexOf(recipeToDelete);
-          if (index) {
-            this.recipesList.splice(index);
-          }
+          this.$router.push('/list');
           this.$toasted.success(`Recette ${res.recette.titre} supprimée ! 💪`);
         })
         .catch(({ message }) => this.$toasted.error(message));

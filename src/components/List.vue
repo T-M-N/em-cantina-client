@@ -9,6 +9,7 @@
 
       <label for="filter">Filtrer par :</label>
       <select name="filterBy" v-model="filterValue">
+        <option value="">filtre</option>
         <option value="titre">recette</option>
         <option value="niveau">Niveau</option>
       </select>
@@ -37,7 +38,7 @@ export default {
   data: function() {
     return {
       recipesList: null,
-      filterValue: "titre"
+      filterValue: ""
     };
   },
   computed: {
@@ -56,8 +57,12 @@ export default {
         niveau = niveau.toLowerCase();
 
         return this.filterValue === "titre"
-          ? `${titre}`.includes(searchText)
-          : niveau.includes(searchText);
+          ? titre.includes(searchText)
+          : this.filterValue === "niveau"
+          ? niveau.includes(searchText)
+          : this.filterValue === "personnes"
+          ? personnes >= Number(searchText)
+          : true;
       });
     }
   },

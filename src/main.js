@@ -14,6 +14,7 @@ import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faListUl } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faPlusCircle)
@@ -23,6 +24,8 @@ library.add(faBookOpen)
 library.add(faListUl)
 library.add(faHome)
 library.add(faEdit)
+library.add(faBars)
+
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
