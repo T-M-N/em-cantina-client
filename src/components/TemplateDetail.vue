@@ -1,57 +1,67 @@
 <template>
   <div>
-<main>
-    <div class="wrapper">
-      <section>
-        <figure>
-          <img :src="recipe.photo || DEFAULT_PHOTO" :alt="`Photo de ${recipe.titre}`" />
-        </figure>
-      </section>
+    <main>
+      <div class="wrapper">
+        <section>
+          <figure>
+            <img :src="recipe.photo || DEFAULT_PHOTO" :alt="`Photo de ${recipe.titre}`" />
+          </figure>
+        </section>
 
-      <section class="description">
-        <div class="titre_recette">
-          <span>Détail recette</span>
-          <h1>{{recipe.titre}}</h1>
-           <p>{{recipe.description}}</p>
-        </div>
-
-        <br/>
-
-        <div class="detail">
-          <div class="border-right">
-            <p class="font-quantico">Niveau :</p>
-            <span>{{recipe.niveau}}</span>
+        <section class="description">
+         
+          <div class="titre-recette">
+            <span>Détail recette</span>
+            <h1>{{recipe.titre}}</h1>
+            <p>{{recipe.description}}</p>
           </div>
 
-          <div class="border-right">
-            <p class="font-quantico">Personnes :</p>
-            <span>{{recipe.personnes}}</span>
+          <br />
+
+          <div class="detail">
+            <div class="border-right">
+              <p class="font-quantico">Niveau :</p>
+              <span>{{recipe.niveau}}</span>
+            </div>
+
+            <div class="border-right">
+              <p class="font-quantico">Personnes :</p>
+              <span>{{recipe.personnes}}</span>
+            </div>
+
+            <div>
+              <p class="font-quantico">Temps :</p>
+              <span>{{TempsPreparation}}</span>
+            </div>
           </div>
 
-          <div>
-            <p class="font-quantico">Temps préparation :</p>
-            <span>{{TempsPreparation}}</span>
-          </div>
-        </div>
-      </section>
-    </div>
-    <div class="wrapper2">
-      <section class=" ingredient">
+           
+      <div class="btn-voir-recette">
+        <a href="#" class="btn btn-small" @click.prevent="onRemove">Supprimer cette recette</a>&nbsp;
+        <router-link :to="`/edit/${recipe.id}`" class="btn btn-small">Modifier</router-link>
+      </div>
+        </section>
+      </div>
+      <div class="wrapper2">
+        <section class="ingredient">
           <p>Les ingrédients:</p>
-          <ul class="list_ingredient">
-            <li v-for="ingredient in recipe.ingredients" :recipe="ingredient" :key="ingredient.id">{{ingredient[0]}}-{{ingredient[1]}}</li>
+          <ul class="list-ingredient">
+            <li
+              v-for="ingredient in recipe.ingredients"
+              :recipe="ingredient"
+              :key="ingredient.id"
+            >{{ingredient[0]}}-{{ingredient[1]}}</li>
           </ul>
-        
-      </section>
-      <section class=" w-500 ingredient">
+        </section>
+        <section class="w-500 ingredient">
           <p>Etapes de préparation :</p>
-           <ul class="list_ingredient">
+          <ul class="list-ingredient">
             <li v-for="etape in recipe.etapes" :recipe="etape" :key="etape.id">{{etape}}</li>
           </ul>
-          <!-- <p>-{{recipe.etapes[0]}}</p> -->
-      </section>
-    </div>
-</main>
+        </section>
+      </div>
+      
+    </main>
   </div>
 </template>
 
@@ -71,61 +81,101 @@ export default {
       var minutes = min % 60;
       return hours + "h" + minutes;
     }
+  },
+  methods: {
+    onRemove: function() {
+      this.$emit("remove", this.recipe);
+    }
   }
 };
 </script>
 
 <style scoped>
+.btn-voir-recette {
+  margin: auto;
+  text-align: center;
+}
+@media screen and (max-width: 880px) {
+  .wrapper, .wrapper2{
+    display: flex;
+    flex-direction: column;
+    width:100% !important;
+  }
+  figure img{
+    max-width: 250px !important;
+  }
+  .detail{
+    align-items: baseline;
+  }
+
+  ul, li{
+    padding:0;margin:0;
+  }
+ 
+}
+
+.wrapper, .wrapper2{
+  width:900px;
+  align-items: center;
+}
+
+
 .wrapper {
   display: flex;
   justify-content: center;
-  width: 900px;
   margin: auto;
 }
-.wrapper2{
- display: flex;
-    -ms-flex-pack: center;
-    width: 900px;
-    margin: auto;
-    justify-content: space-between;
-    background: #f4f4f4;
-    padding: 2em;
+.wrapper2 {
+  display: flex;
+  -ms-flex-pack: center;
+  margin: auto;
+  justify-content: space-between;
+  background: #f4f4f4;
+  align-items: baseline;
 }
-.w-500{
-    width:500px;
+
+ul li{
+  margin-bottom: 5px;
+}
+@media screen and (min-width: 880px) {
+.w-500 {
+  width: 50%;
+}}
+
+.ingredient{
+   padding: 2em;
+   margin-top: 5px;
 }
 
 .ingredient p {
-    text-align:left;
+  text-align: left;
 }
 
-li{
-    text-align:left;
+li {
+  text-align: left;
 }
 
-.baseline{
-    align-items: baseline
+.baseline {
+  align-items: baseline;
 }
 
 .detail {
   display: flex;
   justify-content: space-between;
   align-self: normal;
+  text-align: center;
 }
-
-
+.detail div:nth-child(odd),.detail div:nth-child(even) {
+  padding: 1em;
+  margin-bottom: 5px;
+}
 .detail div:nth-child(odd) {
- /* background-color: #9db668;*/
-  padding: 2em;
-  width: 118px;
+  width: 100%;
 }
 
 .detail div:nth-child(even) {
- /* background-color: #f4f4f4;*/
-  padding: 2em;
-  width: 118px;
+  width: 100%;
 }
-
 
 .description {
   display: flex;
@@ -133,16 +183,17 @@ li{
   justify-content: center;
   align-items: center;
 }
-.titre_recette {
+.titre-recette {
   color: #908f8f;
   background: #f4f4f4;
   display: inline-flex;
   flex-direction: column;
   padding: 2em;
+  align-items: center;
 }
 
-.titre_recette h1{
-    color:#cd4031 !important;
+.titre-recette h1 {
+  color: #cd4031 !important;
 }
 figure img {
   display: block;

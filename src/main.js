@@ -9,10 +9,20 @@ import router from './router.js'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { faUtensils } from '@fortawesome/free-solid-svg-icons'
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { faListUl } from '@fortawesome/free-solid-svg-icons'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faPlusCircle)
 library.add(faTimesCircle)
+library.add(faUtensils)
+library.add(faBookOpen)
+library.add(faListUl)
+library.add(faHome)
+library.add(faEdit)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

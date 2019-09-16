@@ -25,7 +25,16 @@ html {
 body {
   margin: 0;
   font-family: "Quantico", sans-serif;
+  overflow-x: hidden;
 }
+
+  .fond {
+      background-image: url(./assets/fond_legume.png);
+      background-repeat: no-repeat;
+      background-position: top center;
+  }
+
+
 p {
   font-family: "Poppins", sans-serif;
 }
@@ -37,14 +46,9 @@ a:hover {
   color: #cd4031;
 }
 
-.container {
-  max-width: 1152px;
-  margin: 0 auto;
-}
-
-.centered {
+/* .centered {
   text-align: center;
-}
+} */
 
 .actions {
   margin-top: 1.4em;
@@ -67,7 +71,7 @@ a:hover {
 
 .btn:hover {
   color: #fff;
-  background: linear-gradient(to bottom, #9db668 50%, #9db668);
+  background: linear-gradient(to bottom, #ffc107 50%, #ffc107);
 }
 
 .btn:active {
@@ -88,27 +92,51 @@ a:hover {
    * Style pour les formulaires
    */
 
-form input[type="text"],
-form input[type="search"],
-form input[type="password"],
-form input[type="date"],
-form input[type="url"],
-form select {
-  padding: 0.5em 0.9em;
-  border-radius: 2px;
-  border: thin solid #c0c0c0;
-  background: linear-gradient(to bottom, #e6e6e6 0%, transparent 20%);
+label {
+  text-transform: uppercase;
+}
+
+button[type="submit"] {
+  display: flex;
+  margin: auto;
 }
 
 /**
    * Style pour les détails recettes
    */
-.border-right{
-  border-right:1px solid #cccccc;
+
+.border-right {
+  border-right: 1px solid #cccccc;
 }
-.font-quantico{
-     font-family: "Quantico", sans-serif;
-     font-weight: 700;
+.font-quantico {
+  font-family: "Quantico", sans-serif;
+  font-weight: 700;
 }
 
+/**
+   * List
+   */
+.filterform {
+  text-align: center;
+}
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #cd4031;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 780px) {
+  h1{
+    font-size:1.5em;
+  }
+}
+
+path {
+  color: #ffc107;
+}
+
+.svg-inline--fa {
+  width: 50 !important;
+}
 </style>

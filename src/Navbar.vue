@@ -34,7 +34,14 @@ export default {
 };
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@media screen and (max-width: 780px) {
+  .navbar > .container {
+    display: flex;
+    flex-direction: column !important;
+  }
+}
 .navbar {
   background-color: #efefef;
   overflow: hidden;
@@ -124,7 +131,9 @@ export default {
     top: 0;
     right: 0;
   }
+}
 
+@media screen and (max-width: 780px) {
   .navbar.responsive {
     position: relative;
     display: flex;
@@ -139,14 +148,6 @@ export default {
     float: none;
     display: block;
     text-align: left;
-  }
-
-  .none {
-    display: none !important;
-  }
-  .navbar > .container {
-    display: flex;
-    flex-direction: column !important;
   }
 }
 </style>

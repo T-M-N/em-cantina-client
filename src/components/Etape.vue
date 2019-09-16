@@ -3,43 +3,31 @@
     <div>
       <button class="button btn-primary" @click.prevent="addRow">Ajouter une étape</button>
     </div>
-
-    <!-- <div v-for="(etape,index) in recipe.etapes" :recipe="etape" :key="index">
-     <input type="text" placeholder="ajouter une étape"  v-model="recipe.etape"  id="index" style="margin-top: 10px;">
-    </div> -->
-
-    
-    <div class="form-group" 
-       v-for="(etape, index) in recipe.etapes" :recipe="etape" :key="index">
+    <div class="form-group" v-for="(etape, index) in recipe.etapes" :recipe="etape" :key="index">
       <label for="etapes">etape :</label>
-      <input type="text" 
-          v-model="recipe.etapes[index]"
-         id="etape" placeholder="etape" />
+      <input type="text" v-model="recipe.etapes[index]" id="etape" placeholder="etape" />
     </div>
-
-
   </div>
 </template>
 
 <script>
-
-
 export default {
   name: "Etape",
-   props: {
+  props: {
     recipe: {
       type: Object,
       default: function() {
         return {
-      etapes:[Array, String]
+          etapes: [Array, String]
+        };
+      }
     }
-      }}
   },
   methods: {
     addRow: function() {
       this.recipe.etapes.push({});
     },
-   
+
     onSubmit: function() {
       if (this.$v.recipe.$invalid) return this.$v.recipe.$touch();
       this.$emit("send", this.recipe);
