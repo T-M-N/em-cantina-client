@@ -164,6 +164,7 @@ NIVEAU, PERSONNES, TEMPS PREPARATION
   justify-content: space-between;
   align-self: normal;
   text-align: center;
+  margin-bottom: 35px;
 }
 
 .detail div:nth-child(odd),
@@ -209,6 +210,14 @@ RESPONSIVE
 @media screen and (max-width: 780px) {
   figure {
     margin-top: 2em !important;
+  }
+  .detail {
+    margin-bottom: 0px;
+  }
+  .detail div:nth-child(odd),
+  .detail div:nth-child(even) {
+    padding: 0em;
+    margin-bottom: 25px;
   }
 }
 
