@@ -12,6 +12,7 @@
         <option value="titre">Recette</option>
         <option value="niveau">Niveau</option>
          <option value="personnes">Personnes</option>
+          <option value="tempsPreparation">Temps de préparation</option>
       </select>
     </form>
 
@@ -51,8 +52,10 @@ export default {
       }
     },
     filteredList: function() {
-      return this.recipesList.filter(({ titre, niveau, personnes }) => {
-        let searchText = this.$store.state.recipeSearch;
+      let searchText = this.$store.state.recipeSearch;
+        
+
+      return this.recipesList.filter(({ titre, niveau, personnes, tempsPreparation }) => {
         titre = titre.toLowerCase();
         niveau = niveau.toLowerCase();
 
@@ -60,6 +63,8 @@ export default {
           ? titre.includes(searchText)
           : this.filterValue === "niveau"
           ? niveau.includes(searchText)
+          : this.filterValue === "tempsPreparation"
+          ? tempsPreparation <= Number(searchText)
           : this.filterValue === "personnes"
           ? personnes >= Number(searchText)
           : true;

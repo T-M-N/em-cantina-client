@@ -28,10 +28,10 @@ export default {
           this.$toasted.success(`Recette ${res.recette.titre} supprimée ! 💪`);
         })
         .catch(({ message }) => this.$toasted.error(message));
-    }
-  },
-   created: function() {
-    RecipeService.fetchOne(this.$route.params.id)
+    },
+    fetchOneRecipe : function(id){
+      //method pour récupérer une recette
+     RecipeService.fetchOne(id)
       .then(recipe => {
         this.recipe = recipe;
       })
@@ -39,6 +39,18 @@ export default {
         this.$toasted.error(message);
         this.$router.replace("/");
       });
+  }
+  },
+  
+   created: function() {
+   this.fetchOneRecipe(this.$route.params.id)
+  },
+  beforeRouteUpdate: function(to, from, next){
+    if(to.params.id != from.params.id){
+      this.fetchOneRecipe(to.params.id)
+    }
+    // dis au router d'aller à la route suiviante (ici to)
+    next();
   },
 };
 </script>
