@@ -3,10 +3,7 @@
     <h1>
       <font-awesome-icon icon="utensils" />  Ajouter une recette
     </h1>
-
-    
-
-    <Form @send="addRecipe"></Form>
+      <Form @send="addRecipe"></Form>
   </div>
 </template>
 
