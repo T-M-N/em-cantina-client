@@ -6,6 +6,7 @@ import VueToasted from 'vue-toasted'
 import Vuex from 'vuex'
 import router from './router.js'
 
+// FONTAWESOME
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
@@ -25,6 +26,7 @@ library.add(faListUl)
 library.add(faHome)
 library.add(faEdit)
 library.add(faBars)
+
 
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

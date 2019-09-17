@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar" id="mynavbar">
     <div class="container">
-     <router-link class="logo" to="/"> <h1>| CANTINA |</h1> </router-link>
+      <router-link class="logo" to="/">
+        <h1>| CANTINA |</h1>
+      </router-link>
       <router-link to="/">
         <font-awesome-icon icon="home" />Accueil
       </router-link>
@@ -32,6 +34,9 @@ export default {
 </script>
 
 <style scoped>
+/** 
+ BARRE DE NAVIGATION
+ **/
 
 .navbar {
   background-color: #efefef;
@@ -43,7 +48,6 @@ export default {
   display: flex;
   flex-flow: row wrap;
   flex-direction: row;
-  /* justify-content: center; */
   align-items: center;
 }
 
@@ -61,6 +65,7 @@ export default {
   transition: all 150ms;
   transform: scale(1);
 }
+
 .navbar a:hover:not(.logo) {
   background-color: #ffc107;
   transform: scale(1.05);
@@ -70,6 +75,7 @@ export default {
 .navbar a:hover path {
   color: #cd4031;
 }
+
 .navbar a.router-link-exact-active:not(.logo) {
   background-color: #cd4031;
   color: #ffffff;
@@ -99,29 +105,31 @@ export default {
   color: white;
 }
 
+/** 
+ BURGER MENU CACHER SUR DESKTOP
+ **/
+
 .icon {
   display: none !important;
 }
+
+/** 
+ RESPONSIVE 
+ **/
 @media screen and (min-width: 780px) {
-.logo h1{
-  font-size: 1.9em !important;
-}
-.navbar{
-  position: fixed;
+  .logo h1 {
+    font-size: 1.9em !important;
+  }
+  .navbar {
+    position: fixed;
     z-index: 1;
     width: 100%;
+  }
 }
 
-}
 @media screen and (max-width: 780px) {
   .navbar a:not(:first-child) {
     display: none;
-  }
-  .icon {
-    display: block !important;
-    position: absolute;
-    top: 0px;
-    right: 0;
   }
 
   .navbar.responsive {
@@ -129,23 +137,33 @@ export default {
     display: flex;
     flex-direction: column;
   }
+
   .navbar.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
+
   .navbar.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
 
-  .none {
-    display: none !important;
-  }
   .navbar > .container {
     display: flex;
     flex-direction: column !important;
   }
+
+/** 
+BURGER MENU
+ **/
+  .icon {
+    display: block !important;
+    position: absolute;
+    top: 0px;
+    right: 0;
+  }
+
 }
 </style>

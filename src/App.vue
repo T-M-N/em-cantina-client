@@ -22,10 +22,54 @@ html {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   color: #2c3e50;
 }
+
 body {
   margin: 0;
-  font-family: "Quantico", sans-serif;
+  font-family: "quanticoregular";
   overflow-x: hidden;
+}
+
+p,
+ul li {
+  font-family: "poppinslight";
+}
+
+/**
+FONT QUANTICO
+**/
+@font-face {
+  font-family: "quanticobold";
+  src: url("./fonts/quantico/quantico-bold-webfont.woff2") format("woff2"),
+    url("./fonts/quantico/quantico-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "quanticoregular";
+  src: url("./fonts/quantico/quantico-regular-webfont.woff2") format("woff2"),
+    url("./fonts/quantico/quantico-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+FONT Poppins
+**/
+@font-face {
+  font-family: "poppinslight";
+  src: url("./fonts/poppins/poppins-light-webfont.woff2") format("woff2"),
+    url("./fonts/poppins/poppins-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "poppinsblack";
+  src: url("./fonts/poppins/poppins-black-webfont.woff2") format("woff2"),
+    url("./fonts/poppins/poppins-black-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .fond {
@@ -36,9 +80,6 @@ body {
   position: relative;
 }
 
-p {
-  font-family: "Poppins", sans-serif;
-}
 a {
   color: #cd4031;
 }
@@ -47,18 +88,13 @@ a:hover {
   color: #cd4031;
 }
 
-/* .centered {
-  text-align: center;
-} */
-
 .actions {
   margin-top: 1.4em;
 }
 
 /**
-   * Styles pour un bouton
-   */
-
+ STYLES POUR BOUTONS
+**/
 .btn {
   display: inline-block;
   padding: 0.5em 1.4em;
@@ -90,9 +126,8 @@ a:hover {
 }
 
 /**
-   * Style pour les formulaires
-   */
-
+ Style pour les formulaires
+**/
 label {
   text-transform: uppercase;
 }
@@ -103,23 +138,24 @@ button[type="submit"] {
 }
 
 /**
-   * Style pour les détails recettes
-   */
-
+ STYLE POUR DETAIL RECETTE
+**/
 .border-right {
   border-right: 1px solid #cccccc;
 }
+
 .font-quantico {
   font-family: "Quantico", sans-serif;
   font-weight: 700;
 }
 
 /**
-   * List
-   */
+LIST
+**/
 .filterform {
   text-align: center;
 }
+
 h1 {
   text-align: center;
   text-transform: uppercase;
@@ -129,17 +165,24 @@ h1 {
   margin: 0;
 }
 
-@media screen and (max-width: 780px) {
-  h1 {
-    font-size: 1.5em;
-  }
-}
-
 path {
   color: #ffc107;
 }
 
 .svg-inline--fa {
   width: 50 !important;
+}
+
+figure {
+  padding: 0;
+  margin: 0;
+}
+/**
+RESPONSIVE
+**/
+@media screen and (max-width: 780px) {
+  h1 {
+    font-size: 1.5em;
+  }
 }
 </style>

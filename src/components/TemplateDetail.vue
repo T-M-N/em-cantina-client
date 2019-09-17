@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main >
+    <main>
       <div class="wrapper">
         <section>
           <figure>
@@ -9,7 +9,6 @@
         </section>
 
         <section class="description">
-         
           <div class="titre-recette">
             <span>Détail recette</span>
             <h1>{{recipe.titre}}</h1>
@@ -35,11 +34,10 @@
             </div>
           </div>
 
-           
-      <div class="btn-voir-recette">
-        <a href="#" class="btn btn-small" @click.prevent="onRemove">Supprimer cette recette</a>&nbsp;
-        <router-link :to="`/edit/${recipe.id}`" class="btn btn-small">Modifier</router-link>
-      </div>
+          <div class="btn-voir-recette">
+            <a href="#" class="btn btn-small" @click.prevent="onRemove">Supprimer cette recette</a>&nbsp;
+            <router-link :to="`/edit/${recipe.id}`" class="btn btn-small">Modifier</router-link>
+          </div>
         </section>
       </div>
       <div class="wrapper2">
@@ -60,7 +58,6 @@
           </ul>
         </section>
       </div>
-      
     </main>
   </div>
 </template>
@@ -91,34 +88,13 @@ export default {
 </script>
 
 <style scoped>
-.btn-voir-recette {
+main {
+  max-width: 1100px;
   margin: auto;
-  text-align: center;
-}
-@media screen and (max-width: 880px) {
-  .wrapper, .wrapper2{
-    display: flex;
-    flex-direction: column;
-    width:100% !important;
-  }
-  figure img{
-    max-width: 250px !important;
-  }
-  .detail{
-    align-items: baseline;
-  }
-
-  ul, li{
-    padding:0;margin:0;
-  }
- 
 }
 
-main{
-  max-width: 900px;
-  margin:auto;
-}
-.wrapper, .wrapper2{
+.wrapper,
+.wrapper2 {
   align-items: center;
 }
 
@@ -126,7 +102,6 @@ main{
   display: flex;
   justify-content: space-around;
   margin: auto;
-
 }
 .wrapper2 {
   display: flex;
@@ -137,44 +112,66 @@ main{
   align-items: baseline;
 }
 
-ul li{
-  margin-bottom: 5px;
+/** 
+BOUTON, LIST, TITRE
+ **/
+.titre-recette h1 {
+  color: #cd4031 !important;
 }
-@media screen and (min-width: 880px) {
-.wrapper{
-    padding-top:110px;
-}
-.w-500 {
-  width: 50%;
-}}
 
-.ingredient{
-   padding: 2em;
-   margin-top: 5px;
+.titre-recette {
+  color: #908f8f;
+  background: #f4f4f4;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 2em;
+  align-items: center;
+}
+
+.btn-voir-recette {
+  margin: auto;
+  text-align: center;
+}
+
+ul li {
+  margin-bottom: 10px;
+  line-height: 1.8em;
+}
+
+/** 
+INGREDIENT
+ **/
+.ingredient {
+  padding: 2em;
+  margin-top: 5px;
 }
 
 .ingredient p {
   text-align: left;
-}
-
-li {
-  text-align: left;
+  color: #cd4031;
+  font-family: "poppinsblack";
 }
 
 .baseline {
   align-items: baseline;
 }
 
+/** 
+NIVEAU, PERSONNES, TEMPS PREPARATION
+ **/
 .detail {
   display: flex;
   justify-content: space-between;
   align-self: normal;
   text-align: center;
 }
-.detail div:nth-child(odd),.detail div:nth-child(even) {
+
+.detail div:nth-child(odd),
+.detail div:nth-child(even) {
   padding: 1em;
   margin-bottom: 5px;
 }
+
 .detail div:nth-child(odd) {
   width: 100%;
 }
@@ -189,21 +186,56 @@ li {
   justify-content: center;
   align-items: center;
 }
-.titre-recette {
-  color: #908f8f;
-  background: #f4f4f4;
-  display: inline-flex;
-  flex-direction: column;
-  padding: 2em;
-  align-items: center;
-}
 
-.titre-recette h1 {
-  color: #cd4031 !important;
-}
 figure img {
   display: block;
   max-width: 350px;
   margin: auto;
+}
+
+/** 
+RESPONSIVE
+ **/
+@media screen and (min-width: 880px) {
+  .wrapper {
+    padding-top: 110px;
+  }
+
+  .w-500 {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  figure {
+    margin-top: 2em !important;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .wrapper,
+  .wrapper2 {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+  }
+
+  figure {
+    margin-top: 8em;
+  }
+
+  figure img {
+    max-width: 250px !important;
+  }
+
+  .detail {
+    align-items: baseline;
+  }
+
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+  }
 }
 </style>

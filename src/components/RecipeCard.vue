@@ -59,19 +59,9 @@ export default {
 </script>
 
 <style scoped>
-article{
-      border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: auto auto 30px auto;
-    max-width: 800px;
-    background-color: rgba(255,255,255,0.68);
-}
-article {
-  margin: 5px;
-}
-
+/** 
+ TITRE NIVEAU 2
+ **/
 h2 {
   text-align: center;
   font-weight: 700;
@@ -81,7 +71,20 @@ h2 {
 
 h2 > a {
   text-decoration: none;
-  /*color:#f4f4f4;*/
+}
+
+/** 
+ BALISE ARTCILE
+ **/
+.recipe-card {
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: auto auto 30px auto;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.68);
 }
 
 .recipe-card figure img {
@@ -95,6 +98,9 @@ h2 > a {
   line-height: 1.6em;
 }
 
+/** 
+CHAMPS NIVEAU PERSONNES ET TEMPS PREPARATION
+ **/
 .information-recette {
   display: flex;
   justify-content: space-around;
@@ -106,6 +112,9 @@ h2 > a {
   width: 125px;
 }
 
+/** 
+ BOUTON
+ **/
 .btn-voir-recette {
   display: flex;
   justify-content: center;

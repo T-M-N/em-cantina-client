@@ -31,7 +31,7 @@
         <div class="form-group">
           <label for="niveau">niveau :</label>
           <select v-model="$v.recipe.niveau.$model">
-            <option value="">Choisissez un niveau de difficulté</option>
+            <option value>Choisissez un niveau de difficulté</option>
             <option :value="maitre">{{maitre}}</option>
             <option :value="jedi">{{jedi}}</option>
             <option :value="padawan">{{padawan}}</option>
@@ -88,7 +88,11 @@
           <input type="text" v-model="ingredient[0]" id="ingredient" placeholder="25L" />
           <input type="text" v-model="ingredient[1]" id="ingredient" placeholder="de Lait" />
           &nbsp;
-          <a href="#" title="Supprimer cette tâche" @click.prevent="supprimerIngredient(index)">
+          <a
+            href="#"
+            title="Supprimer cette tâche"
+            @click.prevent="supprimerIngredient(index)"
+          >
             <font-awesome-icon icon="times-circle" />
           </a>
           <span v-if="$v.recipe.ingredient.$dirty">Le champs est requis</span>
@@ -103,9 +107,18 @@
       <div class="form-group" v-for="(etape, index) in recipe.etapes" :recipe="etape" :key="index">
         <label for="etapes">Etapes :</label> &nbsp;
         <div class="col-2">
-          <input type="text" v-model="recipe.etapes[index]" id="etape" placeholder="Les étapes de préparation" />
+          <input
+            type="text"
+            v-model="recipe.etapes[index]"
+            id="etape"
+            placeholder="Les étapes de préparation"
+          />
           &nbsp;
-          <a href="#" title="Supprimer cette tâche" @click.prevent="supprimerEtape(index)">
+          <a
+            href="#"
+            title="Supprimer cette tâche"
+            @click.prevent="supprimerEtape(index)"
+          >
             <font-awesome-icon icon="times-circle" />
           </a>
           <span v-if="$v.recipe.etape.$dirty">Le champs est requis</span>
@@ -162,7 +175,14 @@ export default {
       ingredient: { alpha },
       etape: { alpha },
       tempsPreparation: { required, integer },
-      photo: {}
+      photo: {
+        url: function(url) {
+          if (url.startsWith("http") || url.startsWith("https")) {
+            return true;
+          }
+          return false;
+        }
+      }
     }
   },
   methods: {
@@ -193,15 +213,12 @@ export default {
   box-sizing: border-box;
   margin: auto auto 30px auto;
   max-width: 800px;
-  background-color:rgba(255,255,255,0.68);
+  background-color: rgba(255, 255, 255, 0.68);
 }
 
-@media screen and (max-width: 780px) {
- .col-2 {
-  flex-direction: column;
-}
-
-}
+/** 
+ CHAMPS A DEUX CELLULES
+ **/
 .col-2 {
   display: flex;
   align-items: center;
@@ -212,6 +229,9 @@ export default {
   width: 100%;
 }
 
+/** 
+ CHAMPS DU FORMULAIRE
+ **/
 input,
 select {
   width: 100%;
@@ -233,7 +253,6 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-
   width: 50%;
   margin: auto;
   text-align: center;
@@ -252,13 +271,17 @@ button[type="submit"] {
   width: 35%;
 }
 
-input[type="submit"]:hover {
-  background-color: #45a049;
-}
-
 div {
   border-radius: 5px;
   padding: 20px;
 }
 
+/** 
+ CHAMPS A DEUX CELLULES EN FLEX
+ **/
+@media screen and (max-width: 780px) {
+  .col-2 {
+    flex-direction: column;
+  }
+}
 </style>

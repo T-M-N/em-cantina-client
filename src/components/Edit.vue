@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Form from "./Form";
-import RecipeService from "../services/RecipeService";
+import Form from "./Form.vue";
+import RecipeService from "../services/RecipeService.js";
 
 export default {
   name: "Edit",
