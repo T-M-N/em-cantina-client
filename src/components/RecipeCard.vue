@@ -17,12 +17,12 @@
           </div>
 
           <div class="border-right">
-            <p class="font-quantico">Personnes :</p>
+            <p class="font-quantico">Personne(s) :</p>
             <span>{{recipe.personnes}}</span>
           </div>
 
           <div>
-            <p class="font-quantico">Etapes :</p>
+            <p class="font-quantico">Temps :</p>
             <span>{{recipe.tempsPreparation}} min</span>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     DEFAULT_PHOTO: function() {
-      return "https://s1.qwant.com/thumbr/0x0/2/2/6788a08a24aefe72817478982ee2e6/b_1_q_0_p_0.jpg?u=http%3A%2F%2Fgurucul.com%2Fwp-content%2Fuploads%2F2015%2F01%2Fdefault-user-icon-profile.png&q=0&b=1&p=0&a=1";
+      return "https://cdn.pixabay.com/photo/2019/09/15/14/42/dish-4478482_960_720.png";
     }
   },
   methods: {
@@ -59,9 +59,15 @@ export default {
 </script>
 
 <style scoped>
-/* .recette-card {
-  padding: 1em;
-} */
+article{
+      border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: auto auto 30px auto;
+    max-width: 800px;
+    background-color: rgba(255,255,255,0.68);
+}
 article {
   margin: 5px;
 }
@@ -97,7 +103,7 @@ h2 > a {
 .information-recette div {
   padding: 1em 0.6em;
   text-align: center;
-  width: 91px;
+  width: 125px;
 }
 
 .btn-voir-recette {

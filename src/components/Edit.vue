@@ -1,7 +1,7 @@
 <template>
   <div class="fond">
     <h1>
-      <font-awesome-icon icon="edit" />Modifier une recette
+      <font-awesome-icon icon="edit" />  Modifier une recette
     </h1>
 
     <Form :recipe="recipe" v-if="recipe" @send="update" />
@@ -37,7 +37,7 @@ export default {
       RecipeService.updateRecipe(recipe)
         .then(() => {
           this.$toasted.success("Recette mise à jour ! 😉");
-          this.$router.replace("/list");
+          this.$router.replace("/");
         })
         .catch(({ message }) => this.$toasted.error(message));
     }
@@ -46,5 +46,7 @@ export default {
 </script>
 
 <style scoped>
-
+h1{
+  padding: 5.5em 0em 1.5em 0em
+}
 </style>

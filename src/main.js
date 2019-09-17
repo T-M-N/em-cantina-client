@@ -29,11 +29,11 @@ library.add(faBars)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-Vue.use(VueRouter) // Enregistre le plugin "VueRouter" à l'application Vue.js
-Vue.use(Vuelidate) // Enregistre le plugin "Vuelidate" à l'application Vue.js
+Vue.use(VueRouter) 
+Vue.use(Vuelidate)
 Vue.use(VueToasted, {
   duration: 5000
-}) // Enregistre le plugin "VueToasted" à l'application Vue.js
+})
 Vue.use(Vuex)
 
 Vue.config.productionTip = false

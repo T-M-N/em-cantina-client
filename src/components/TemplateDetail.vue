@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main>
+    <main >
       <div class="wrapper">
         <section>
           <figure>
@@ -114,16 +114,19 @@ export default {
  
 }
 
+main{
+  max-width: 900px;
+  margin:auto;
+}
 .wrapper, .wrapper2{
-  width:900px;
   align-items: center;
 }
 
-
 .wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin: auto;
+
 }
 .wrapper2 {
   display: flex;
@@ -138,6 +141,9 @@ ul li{
   margin-bottom: 5px;
 }
 @media screen and (min-width: 880px) {
+.wrapper{
+    padding-top:110px;
+}
 .w-500 {
   width: 50%;
 }}

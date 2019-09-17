@@ -32,6 +32,8 @@ body {
   background-image: url(./assets/fond_legume.png);
   background-repeat: no-repeat;
   background-position: top center;
+  background-color: #ffffff;
+  position: relative;
 }
 
 p {
@@ -123,6 +125,8 @@ h1 {
   text-transform: uppercase;
   color: #cd4031;
   font-weight: 700;
+  padding: 0;
+  margin: 0;
 }
 
 @media screen and (max-width: 780px) {

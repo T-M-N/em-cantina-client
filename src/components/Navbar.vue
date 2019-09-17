@@ -1,12 +1,9 @@
 <template>
   <nav class="navbar" id="mynavbar">
     <div class="container">
-      <h1>| CANTINA |</h1>
+     <router-link class="logo" to="/"> <h1>| CANTINA |</h1> </router-link>
       <router-link to="/">
         <font-awesome-icon icon="home" />Accueil
-      </router-link>
-      <router-link :to="{name : 'list'}">
-        <font-awesome-icon icon="list-ul" />Liste des recettes
       </router-link>
       <router-link to="/add">
         <font-awesome-icon icon="utensils" />Ajouter une recette
@@ -35,19 +32,18 @@ export default {
 </script>
 
 <style scoped>
+
 .navbar {
   background-color: #efefef;
   overflow: hidden;
-  margin-bottom: 1em;
-  border-bottom: 2px solid #cd4031;
-  z-index: 10;
+  border-bottom: 5px solid #ffc107;
 }
 
 .navbar > .container {
   display: flex;
   flex-flow: row wrap;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
@@ -61,11 +57,11 @@ export default {
   color: rgb(105, 105, 105);
   text-decoration: none;
   display: inline-block;
-  padding: 0.75em 1em;
+  padding: 0.3em 1em;
   transition: all 150ms;
   transform: scale(1);
 }
-.navbar a:hover {
+.navbar a:hover:not(.logo) {
   background-color: #ffc107;
   transform: scale(1.05);
   color: #ffffff;
@@ -74,7 +70,7 @@ export default {
 .navbar a:hover path {
   color: #cd4031;
 }
-.navbar a.router-link-exact-active {
+.navbar a.router-link-exact-active:not(.logo) {
   background-color: #cd4031;
   color: #ffffff;
 }
@@ -86,13 +82,6 @@ export default {
 .navbar a:active {
   transition: none;
   color: #ffffff;
-}
-
-.navbar {
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .navbar a {
@@ -113,7 +102,17 @@ export default {
 .icon {
   display: none !important;
 }
+@media screen and (min-width: 780px) {
+.logo h1{
+  font-size: 1.9em !important;
+}
+.navbar{
+  position: fixed;
+    z-index: 1;
+    width: 100%;
+}
 
+}
 @media screen and (max-width: 780px) {
   .navbar a:not(:first-child) {
     display: none;
@@ -121,7 +120,7 @@ export default {
   .icon {
     display: block !important;
     position: absolute;
-    top: 15px;
+    top: 0px;
     right: 0;
   }
 

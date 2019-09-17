@@ -2,13 +2,13 @@
   <form class="userform" @submit.prevent="onSubmit">
     <div class="container">
       <div class="form-group">
-        <label for="titre">titre :</label>
+        <label for="titre">Titre de la recette :</label>
         <input
           type="text"
           v-model="$v.recipe.titre.$model"
           @blur="$v.recipe.titre.$touch()"
           id="titre"
-          placeholder="titre"
+          placeholder="Titre de la recette"
         />
         <span v-if="$v.recipe.titre.$dirty && !$v.recipe.titre.required">Le champs est requis</span>
       </div>
@@ -20,7 +20,7 @@
           v-model="$v.recipe.description.$model"
           @blur="$v.recipe.description.$touch()"
           id="description"
-          placeholder="description"
+          placeholder="Description de la recette"
         />
         <span
           v-if="$v.recipe.description.$dirty && !$v.recipe.description.required"
@@ -31,6 +31,7 @@
         <div class="form-group">
           <label for="niveau">niveau :</label>
           <select v-model="$v.recipe.niveau.$model">
+            <option value="">Choisissez un niveau de difficulté</option>
             <option :value="maitre">{{maitre}}</option>
             <option :value="jedi">{{jedi}}</option>
             <option :value="padawan">{{padawan}}</option>
@@ -38,7 +39,7 @@
         </div>
 
         <div class="form-group">
-          <label for="personnes">personnes :</label>
+          <label for="personnes">Personnes :</label>
           <input
             min="1"
             max="20"
@@ -46,7 +47,7 @@
             v-model.number="$v.recipe.personnes.$model"
             @blur="$v.recipe.personnes.$touch()"
             id="personnes"
-            placeholder="personnes"
+            placeholder="Personnes"
           />
           <span
             v-if="$v.recipe.personnes.$dirty && !$v.recipe.personnes.integer"
@@ -56,13 +57,13 @@
 
       <div class="col-2">
         <div class="form-group">
-          <label for="tempsPreparation">tempsPreparation :</label>
+          <label for="tempsPreparation">Temps de préparation :</label>
           <input
             type="number"
             v-model.number="$v.recipe.tempsPreparation.$model"
             @blur="$v.recipe.tempsPreparation.$touch()"
             id="tempsPreparation"
-            placeholder="tempsPreparations"
+            placeholder="Temps de préparation"
           />
           <span
             v-if="$v.recipe.tempsPreparation.$dirty && !$v.recipe.tempsPreparation.integer"
@@ -102,7 +103,7 @@
       <div class="form-group" v-for="(etape, index) in recipe.etapes" :recipe="etape" :key="index">
         <label for="etapes">Etapes :</label> &nbsp;
         <div class="col-2">
-          <input type="text" v-model="recipe.etapes[index]" id="etape" placeholder="etape" />
+          <input type="text" v-model="recipe.etapes[index]" id="etape" placeholder="Les étapes de préparation" />
           &nbsp;
           <a href="#" title="Supprimer cette tâche" @click.prevent="supprimerEtape(index)">
             <font-awesome-icon icon="times-circle" />
@@ -192,7 +193,7 @@ export default {
   box-sizing: border-box;
   margin: auto auto 30px auto;
   max-width: 800px;
-  background-color:rgba(255,255,255,0.64);
+  background-color:rgba(255,255,255,0.68);
 }
 
 @media screen and (max-width: 780px) {
