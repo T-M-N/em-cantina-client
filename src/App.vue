@@ -121,7 +121,6 @@ a:hover {
 }
 
 .btn.btn-small {
-  padding: 0.15em 0.5em;
   font-size: 0.9em;
 }
 
@@ -174,7 +173,7 @@ path {
 }
 
 figure {
-  padding: 0;
+  padding: 2em;
   margin: 0;
 }
 /**
