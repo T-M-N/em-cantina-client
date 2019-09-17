@@ -154,7 +154,14 @@ export default {
           ingredients: [[""]],
           etapes: [""],
           tempsPreparation: null,
-          photo: ""
+          photo: {
+            url: function(url) {
+              if (url.startsWith("http") || url.startsWith("https")) {
+                return true;
+              }
+              return false;
+            }
+          }
         };
       }
     }
